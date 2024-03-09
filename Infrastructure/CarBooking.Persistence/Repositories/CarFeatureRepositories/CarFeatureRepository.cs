@@ -33,6 +33,12 @@ namespace CarBooking.Persistence.Repositories.CarFeatureRepositories
              _context.SaveChanges();
         }
 
+        public void CreateCarFeatureByCar(CarFeature carFeature)
+        {
+           _context.CarFeatures.Add(carFeature);
+            _context.SaveChanges();
+        }
+
         public List<CarFeature> GetCarFeaturesByCarId(int carId)
         {
             return _context.CarFeatures.Include(y => y.Feature).Where(x => x.CarId == carId).ToList();
