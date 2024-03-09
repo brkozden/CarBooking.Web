@@ -1,0 +1,60 @@
+﻿@model CreateBrandDto
+
+@{
+    ViewData["Title"] = "CreateBrand";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Yeni Marka Ekleme</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Marka İşlemleri</a></li>
+                    <li class="breadcrumb-item active">Yeni Marka Ekleme</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Marka Ekleme Formu</h4>
+                <p class="card-subtitle mb-4"><code>Eklenecek markayı bu formu doldurarak ekleyebilirsiniz. Marka ile ilgili bilgileri lütfen eksiksiz giriniz.</code></p>
+                <form class="needs-validation" method="post">
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-6">
+                            <label for="validationBrandName">Marka Adı</label>
+                            <input type="text" class="form-control" asp-for="Name" id="validationBrandName" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="btn btn-primary waves-effect waves-light mt-3" type="submit">Kaydet</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

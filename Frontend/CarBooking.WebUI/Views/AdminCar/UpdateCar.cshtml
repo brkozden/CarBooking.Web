@@ -1,0 +1,93 @@
+﻿@model UpdateCarDto
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Yeni Araba Ekleme</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Araba İşlemleri</a></li>
+                    <li class="breadcrumb-item active">Araba Güncelleme</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Araba Güncelleme Formu</h4>
+                <p class="card-subtitle mb-4"><code>Mevcut arabalarınızı bu formu doldurarak güncelleyebilirsiniz. Arabalar ile ilgili bilgileri lütfen eksiksiz giriniz.</code></p>
+                <form class="needs-validation" method="post">
+                    <input type="hidden" asp-for="CarId"/>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationBrand">Marka</label>
+                            @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)@ViewBag.brandValues, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationModel">Model</label>
+                            <input type="text" class="form-control" asp-for="Model" id="validationModel" placeholder="Model" required>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationFuel">Yakıt Türü</label>
+                            <input type="text" class="form-control" asp-for="Fuel" id="validationFuel" placeholder="Yakıt Türü" required>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationTransmission">Vites Türü</label>
+                            <input type="text" class="form-control" asp-for="Transmission" id="validationTransmission" placeholder="Vites Türü" required>
+
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationSeat">Koltuk Sayısı</label>
+                            <input type="number" min="0" class="form-control" asp-for="Seat" id="validationSeat" placeholder="Koltuk Sayısı" required>
+
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationLuggage">Bagaj Hacmi</label>
+                            <input type="number" min="0" class="form-control" asp-for="LuggageCapacity" id="validationLuggage" placeholder="Bagaj Hacmi" required>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="col-md-2 mb-3">
+                            <label for="validationKm">Km</label>
+                            <input type="number" asp-for="Km" class="form-control" id="validationKm" placeholder="Km" required>
+
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="validationBigImage">Ana Fotoğraf</label>
+                            <input type="text" asp-for="BigImageUrl" class="form-control" id="validationBigImage" placeholder="Ana Fotoğraf" required>
+
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="validationCoverImage">Kapak Fotoğrafı</label>
+                            <input type="text" asp-for="CoverImageUrl" class="form-control" id="validationCoverImage" placeholder="Kapak Fotoğrafı" required>
+
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-primary waves-effect waves-light mt-3" type="submit">Kaydet</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,65 @@
+﻿@model UpdateLocationDto
+
+@{
+    ViewData["Title"] = "UpdateLocation";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Lokasyon Bilgisi Güncelleme</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Lokasyon İşlemleri</a></li>
+                    <li class="breadcrumb-item active">Lokasyon Bilgisi Güncelleme</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Lokasyon Bilgisi Güncelleme Formu</h4>
+                <p class="card-subtitle mb-4">
+                    <code>
+                        Mevcut lokasyon bilgilerinizi bu formu doldurarak güncelleyebilirsiniz.
+                        Lokasyon bilgilerini lütfen eksiksiz giriniz.
+                    </code>
+                </p>
+                <form class="needs-validation" method="post">
+                    <div class="form-row">
+                        <input type="hidden" asp-for="LocationId" />
+                        <div class="col-md-12 mb-12">
+                            <label for="validationName">Lokasyon Adı</label>
+                            <input type="text" class="form-control" asp-for="Name" id="validationName" required>
+                        </div>
+
+                    
+                    </div>
+
+
+                    <button class="btn btn-primary waves-effect waves-light mt-3" type="submit">Lokasyonu Güncelle</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

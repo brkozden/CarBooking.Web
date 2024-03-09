@@ -1,0 +1,72 @@
+﻿@model UpdateBannerDto
+
+@{
+    ViewData["Title"] = "UpdateBanner";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Marka Güncelleme</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Marka İşlemleri</a></li>
+                    <li class="breadcrumb-item active">Marka Güncelleme</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Marka Güncelleme Formu</h4>
+                <p class="card-subtitle mb-4"><code>Mevcut marka adını bu formu doldurarak güncelleyebilirsiniz. Marka ile ilgili isim bilgisini lütfen eksiksiz giriniz.</code></p>
+                <form class="needs-validation" method="post">
+                    <input type="hidden" asp-for="BannerId" />
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-6">
+                            <label for="validationTitle">Başlık</label>
+                            <input type="text" class="form-control" asp-for="Title" id="validationTitle" required>
+                        </div>
+                        <div class="col-md-6 mb-6">
+                            <label for="validationDescription">Açıklama</label>
+                            <input type="text" class="form-control" asp-for="Description" id="validationDescription" required>
+                        </div>
+                        <div class="col-md-6 mb-6">
+                            <label for="validationVideoDescription">Video Açıklaması</label>
+                            <input type="text" class="form-control" asp-for="VideoDescription" id="validationVideoDescription" required>
+                        </div>
+                        <div class="col-md-6 mb-6">
+                            <label for="validationVideoUrl">Video Url</label>
+                            <input type="text" class="form-control" asp-for="VideoUrl" id="validationVideoUrl" required>
+                        </div>
+
+                    </div>
+
+
+                    <button class="btn btn-primary waves-effect waves-light mt-3" type="submit">Güncelle</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

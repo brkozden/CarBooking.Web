@@ -1,0 +1,79 @@
+﻿@model List<ResultBannerDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Ana sayfa Banner Alanı</h4>
+                    <p class="card-subtitle mb-4">
+                        <code>Ana sayfanın banner alanında bulunan bilgilerin ekleme, düzenleme ve  silme işlemlerini bu sayfa üzerinden yapabilirsiniz.</code>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Başlık</th>
+                                    <th>Açıklama</th>
+                                    <th>Video Url</th>
+                                    <th>Video Açıklaması</th>
+                                    <th>Güncelle</th>
+                                    <th>Sil</th>
+                                    <th>Videoyu izle</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.Title</td>
+                                        <td>@item.Description</td>
+
+                                        <td>@item.VideoUrl</td>
+                                        <td>@item.VideoDescription</td>
+
+                                        <td><a href="/Admin/Banner/UpdateBanner/@item.BannerId" class="btn btn-outline-success waves-effect waves-light">Güncelle</a></td>
+                                        <td><a href="/Admin/Banner/RemoveBanner/@item.BannerId" class="btn btn-outline-danger waves-effect waves-light">Sil</a></td>
+                                        <td><a href="/Admin/Banner/RemoveBanner/@item.BannerId" class="btn btn-outline-dark waves-effect waves-light">Kayıtlı Araçlar</a></td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+<a href="/Admin/Banner/CreateBanner" class="btn btn-success btn-lg btn-block waves-effect waves-light">
+    Yeni Banner Ekle
+</a>
+}
+
+else
+{
+
+    <div class="bg-danger text-white p-3 text-center mt-3" style="border-radius:25px;">Kayıtlı Banner Bulunamadı</div>
+
+}
+
+
+

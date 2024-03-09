@@ -1,0 +1,73 @@
+﻿@model List<ResultBrandDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<a href="/AdminBrand/CreateBrand" class="btn btn-success btn-lg btn-block waves-effect waves-light">
+    Yeni Marka Ekle
+</a>
+
+
+
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Araba Markaları Listesi</h4>
+                    <p class="card-subtitle mb-4">
+                        <code>Arabalar ile ilgili yeni marka ekleme, düzenleme ve  silme işlemlerini bu sayfa üzerinden yapabilirsiniz.</code>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Marka</th>
+                                    <th>Güncelle</th>
+                                    <th>Sil</th>
+                                    <th>Markaya Ait Araçlar</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.Name</td>
+
+                                        <td><a href="/AdminBrand/UpdateBrand/@item.BrandId" class="btn btn-outline-success waves-effect waves-light">Güncelle</a></td>
+                                        <td><a href="/AdminBrand/RemoveBrand/@item.BrandId" class="btn btn-outline-danger waves-effect waves-light">Sil</a></td>
+                                        <td><a href="/AdminBrand/RemoveBrand/@item.BrandId" class="btn btn-outline-dark waves-effect waves-light">Kayıtlı Araçlar</a></td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+}
+else
+{
+
+    <div class="bg-danger text-white p-3 text-center mt-3" style="border-radius:25px;">Kayıtlı Marka Bulunamadı</div>
+
+}
+

@@ -1,0 +1,28 @@
+﻿@model ResultBlogByIdDto
+
+     <h2 class="mb-3">@Model.Title</h2> 
+     <br />
+<p>
+    <img src="@Model.CoverImageUrl" alt="" class="img-fluid">
+</p>
+
+    <p> @Model.Description</p>
+  
+@await Component.InvokeAsync("_BlogDetailCloudTagByBlogComponentPartial", new { id = ViewBag.blogId })
+
+@await Component.InvokeAsync("_BlogDetailAuthorAboutComponentPartial", new { id = ViewBag.blogId })
+
+
+    
+
+
+    <div class="pt-5 mt-5">
+    <h3 class="mb-5">@ViewBag.CommentCount Yorum</h3>
+
+    @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogId })
+
+@*          @await Component.InvokeAsync("_AddCommentComponentPartial")
+ *@
+    @await Html.PartialAsync("~/Views/Blog/CreateComment.cshtml", new { id = ViewBag.blogId })
+    </div>
+

@@ -1,0 +1,68 @@
+﻿@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+
+    int count = 0;
+}
+<a href="/AdminFeature/CreateFeature" class="btn btn-success btn-lg btn-block waves-effect waves-light">
+    Yeni Özellik Ekle
+</a>
+
+
+
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Araba Özellikleri Listesi</h4>
+                    <p class="card-subtitle mb-4">
+                        <code>Arabalar ile ilgili yeni özellik ekleme (örn;klima,bluetooh vs.), düzenleme, ve özellik silme işlemlerini bu sayfa üzerinden yapabilirsiniz.</code>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Özellik</th>
+                                    <th>Güncelle</th>
+                                    <th>Sil</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.Name</td>
+
+                                        <td><a href="/AdminFeature/UpdateFeature/@item.FeatureId" class="btn btn-outline-success waves-effect waves-light">Güncelle</a></td>
+                                        <td><a href="/AdminFeature/RemoveFeature/@item.FeatureId" class="btn btn-outline-danger waves-effect waves-light">Sil</a></td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+}
+else
+{
+
+    <div class="bg-danger text-white p-3 text-center mt-3" style="border-radius:25px;">Araç Özelliği Bulunamadı</div>
+
+}

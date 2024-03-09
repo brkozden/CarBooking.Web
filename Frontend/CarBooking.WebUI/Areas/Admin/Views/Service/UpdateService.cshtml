@@ -1,0 +1,65 @@
+﻿@model UpdateServiceDto
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Hizmet Güncelleme</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Hizmet İşlemleri</a></li>
+                    <li class="breadcrumb-item active">Hizmet Güncelleme</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Hizmet Güncelleme Formu</h4>
+                <p class="card-subtitle mb-4"><code>Mevcut hizmet bilgilerini bu formu doldurarak güncelleyebilirsiniz. Hizmet ile ilgili bilgileri lütfen eksiksiz giriniz.</code></p>
+                <form class="needs-validation" method="post">
+                    <div class="form-row">
+                        <input type="hidden" asp-for="ServiceId"/>
+                        <div class="col-md-6 mb-6">
+                            <label for="validationTitle">Başlık</label>
+                            <input type="text" class="form-control" asp-for="Title" id="validationTitle" required>
+                        </div>
+                        <div class="col-md-6 mb-6">
+                            <label for="validationIconUrl">İkon</label>
+                            <input type="text" class="form-control" asp-for="IconUrl" id="validationIconUrl" required>
+                        </div>
+                        <div class="col-md-12 mb-12">
+                            <label for="validationDescription">Açıklama</label>
+                            <textarea rows="5" class="form-control" asp-for="Description" id="validationDescription" required></textarea>
+                        </div>
+                    </div>
+
+
+                    <button class="btn btn-primary waves-effect waves-light mt-3" type="submit">Güncelle</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+﻿@model List<ResultCategoryDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Kategori Listesi</h4>
+                    <p class="card-subtitle mb-4">
+                        <code>Bloglara ait kategori bilgilerinin ekleme, düzenleme ve silme işlemlerini bu sayfa üzerinden yapabilirsiniz.</code>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Kategori Adı</th>
+                                    <th>Güncelle</th>
+                                    <th>Sil</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.Name</td>
+                                        <td><a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-outline-success waves-effect waves-light">Güncelle</a></td>
+                                        <td><a href="/Admin/Category/RemoveCategory/@item.CategoryId" class="btn btn-outline-danger waves-effect waves-light">Sil</a></td>
+                                 
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <a href="/Admin/Category/CreateCategory" class="btn btn-success btn-lg btn-block waves-effect waves-light">
+        Yeni Kategori Ekle
+    </a>
+}
+
+else
+{
+
+    <div class="bg-danger text-white p-3 text-center mt-3" style="border-radius:25px;">Kayıtlı Kategori Bulunamadı</div>
+
+}
+
+
+
+
+
+
+
+
+
