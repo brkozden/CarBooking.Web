@@ -1,0 +1,57 @@
+﻿@model List<ResultCarPricingListWithTimePeriodDto>
+
+
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Ücretlendirme Tablosu</h4>
+            <p class="card-subtitle mb-4 font-size-13">
+                Ücretlendirmede son 30 gün baz alınmıştır.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Marka</th>
+                            <th class="border-top-0">Model</th>
+                            <th class="border-top-0">Günlük Kiralama Ücreti</th>
+                            <th class="border-top-0">Haftalık Kiralama Ücreti</th>
+                            <th class="border-top-0">Aylık Kiralama Ücreti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model ){
+                            
+                            {
+                            
+                                <tr>
+                                    <td class="text-truncate">@item.Brand</td>
+                                    <td class="text-truncate">@item.Model</td>
+                                    <td class="text-truncate">@item.DailyAmount ₺</td>
+                                    <td class="text-truncate">@item.WeeklyAmount ₺</td>
+                                    <td class="text-truncate">@item.MonthlyAmount ₺</td>
+
+
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar progress-bar-striped bg-secondary"
+                                                 role="progressbar" aria-valuenow="85"
+                                                 aria-valuemin="20" aria-valuemax="100"
+                                                 style="width:85%"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-truncate"></td>
+                                </tr>
+                            }
+                        
+                        }
+                     
+                    </tbody>
+                </table>
+            </div>
+
+        </div> 
+    </div> 
+</div>
