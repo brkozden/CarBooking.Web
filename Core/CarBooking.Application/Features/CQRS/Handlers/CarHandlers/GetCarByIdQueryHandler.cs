@@ -34,6 +34,10 @@ namespace CarBooking.Application.Features.CQRS.Handlers.CarHandlers
                Seat = values.Seat,
                Transmission = values.Transmission,
                CarId = values.CarId
+               
+               
+              
+              
 
 
             };

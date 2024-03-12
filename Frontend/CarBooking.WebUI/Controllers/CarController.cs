@@ -27,5 +27,13 @@ namespace CarBooking.WebUI.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> CarDetail(int id)
+        {
+            ViewBag.title1 = "Araç Detayları";
+            ViewBag.title2 = "Araçlarımızın Teknik Özellikleri";
+            ViewBag.carId = id;
+          
+            return View();
+        }
     }
 }
