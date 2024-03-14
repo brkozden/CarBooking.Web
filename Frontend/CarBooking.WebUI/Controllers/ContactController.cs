@@ -16,6 +16,8 @@ namespace CarBooking.WebUI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.title1 = "İletişim";
+            ViewBag.title2 = "Bizimle İletişime Geçin";
             return View();
         }
         [HttpPost]

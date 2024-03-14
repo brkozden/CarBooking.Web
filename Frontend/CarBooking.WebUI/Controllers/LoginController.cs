@@ -1,7 +1,12 @@
 ﻿using CarBooking.Dtos.LoginDtos;
+using CarBooking.WebUI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 
 namespace CarBooking.WebUI.Controllers
 {
@@ -22,14 +27,38 @@ namespace CarBooking.WebUI.Controllers
         public async Task<IActionResult> Index(ResultLoginDto login)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(login);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7057/api/Registers", content);
-            if (responseMessage.IsSuccessStatusCode)
+            var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("https://localhost:7057/api/SignIn", content);
+            if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Login");
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var tokenModel = JsonSerializer.Deserialize<JwtResponseModel>(jsonData, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
 
+                if (tokenModel != null)
+                {
+                    JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+                    var token = handler.ReadJwtToken(tokenModel.Token);
+                    var claims = token.Claims.ToList();
+
+                    if (tokenModel.Token != null)
+                    {
+                        claims.Add(new Claim("carbooktoken", tokenModel.Token));
+                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+                        var authProps = new AuthenticationProperties
+                        {
+                            ExpiresUtc = tokenModel.ExpireDate,
+                            IsPersistent = true
+                        };
+
+                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
+                        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                    }
+                }
             }
+
             return View();
         }
     }

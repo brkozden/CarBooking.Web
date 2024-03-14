@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\carbook-template\.DS_Store" />
     <None Include="wwwroot\carbook-template\css\.DS_Store" />
     <None Include="wwwroot\carbook-template\css\bootstrap\.DS_Store" />
     <None Include="wwwroot\carbook-template\css\css\.DS_Store" />
@@ -62,6 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
   </ItemGroup>
